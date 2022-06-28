@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/gjj_website/static/css/main.827bd951.css",
-    "main.js": "/gjj_website/static/js/main.912e8ca4.js",
+    "main.js": "/gjj_website/static/js/main.ed2a6ddc.js",
     "static/media/gjj_logo.jpeg": "/gjj_website/static/media/gjj_logo.d63e23858f35ddf57fed.jpeg",
     "index.html": "/gjj_website/index.html",
     "main.827bd951.css.map": "/gjj_website/static/css/main.827bd951.css.map",
-    "main.912e8ca4.js.map": "/gjj_website/static/js/main.912e8ca4.js.map"
+    "main.ed2a6ddc.js.map": "/gjj_website/static/js/main.ed2a6ddc.js.map"
   },
   "entrypoints": [
     "static/css/main.827bd951.css",
-    "static/js/main.912e8ca4.js"
+    "static/js/main.ed2a6ddc.js"
   ]
 }
