@@ -2,10 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../../assets/gjj_logo.jpeg";
 
 export const Header = () => {
-  const navigate = useNavigate();
   const onLogout = () => {
-    sessionStorage.removeItem("persist:root");
-    window.location.replace("/");
+    sessionStorage.removeItem("isLogin");
+    window.location.replace("https://jooa7878.github.io/gjj_website");
   };
   return (
     <div className="w-full flex justify-center border-b-[1px] border-mono-2">

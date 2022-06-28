@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-
-import { useAppDispatch } from "../hooks/hooks";
 import { login } from "../redux/thunk/userAction";
 
 export const Login = () => {
   const [userID, setUserID] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const dispatch = useAppDispatch();
 
   const onUserIDChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setUserID(e.currentTarget.value);
@@ -15,7 +12,7 @@ export const Login = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    dispatch(login(userID, userPassword));
+    login(userID, userPassword);
   };
   return (
     <div className="w-full flex justify-center min-h-screen">

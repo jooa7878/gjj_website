@@ -1,13 +1,9 @@
 import { format } from "date-fns";
-import { useEffect } from "react";
-import { IUserTable } from "../../types";
 
-export const UserTable = ({ list }: IUserTable) => {
-  useEffect(() => {
-    list.sort(
-      (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
-    );
-  }, []);
+import { useAppSelector } from "../../hooks/hooks";
+
+export const UserTable = () => {
+  const list = useAppSelector((state) => state.users.userList);
 
   const isDue = (date: string) => {
     const today = format(new Date(), "yyyy-MM-dd");
