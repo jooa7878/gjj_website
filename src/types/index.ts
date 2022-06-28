@@ -10,3 +10,7 @@ export interface IUser {
 export interface ILogin {
   isLogin: boolean;
 }
+
+export interface IUserTable {
+  list: IUser[];
+}

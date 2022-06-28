@@ -1,42 +1,14 @@
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
-import { IUser } from "../../types";
+import { useEffect } from "react";
+import { IUserTable } from "../../types";
 
-const dummayData = [
-  {
-    name: "안상혁",
-    dueDate: "2022-06-30",
-  },
-  {
-    name: "선진호",
-    dueDate: "2022-05-31",
-  },
-  {
-    name: "박찬휘",
-    dueDate: "2023-06-30",
-  },
-  {
-    name: "이준수",
-    dueDate: "2022-08-30",
-  },
-  {
-    name: "한태성",
-    dueDate: "2022-03-30",
-  },
-  {
-    name: "박준성",
-    dueDate: "2022-07-01",
-  },
-];
-
-export const UserTable = () => {
-  const [list, setList] = useState<IUser[]>([]);
+export const UserTable = ({ list }: IUserTable) => {
   useEffect(() => {
-    const res = dummayData.sort(
+    list.sort(
       (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
     );
-    setList(res);
   }, []);
+
   const isDue = (date: string) => {
     const today = format(new Date(), "yyyy-MM-dd");
     return today > date;

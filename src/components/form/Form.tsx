@@ -1,6 +1,8 @@
 import { format } from "date-fns";
+import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { dbService } from "../../firebase";
 
 export const Form = () => {
   const [userName, setUserName] = useState("");
@@ -11,7 +13,7 @@ export const Form = () => {
   const onUserDueDateChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setUserDueDate(e.currentTarget.value);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // 중복확인, 날짜 여부 확인
 
@@ -22,6 +24,36 @@ export const Form = () => {
         text: "미래의 날짜를 입력해주세요",
         timer: 2000,
       });
+    }
+
+    const ok = window.confirm("관원 등록을 진행하시겠습니까?");
+    if (ok) {
+      try {
+        const q = query(collection(dbService, "users"));
+        const userDocs = await getDocs(q);
+        console.log(userDocs);
+        const idx = userDocs.docs.findIndex((v) => v.data().name === userName);
+
+        if (idx !== -1) {
+          return Swal.fire({
+            icon: "error",
+            text: "이미 등록된 관원입니다.",
+            timer: 2000,
+          });
+        }
+        await addDoc(collection(dbService, "users"), {
+          name: userName,
+          dueDate: userDueDate,
+        });
+
+        return Swal.fire({
+          icon: "success",
+          text: "입력이 완료되었습니다.",
+          timer: 2000,
+        });
+      } catch ({ message }) {
+        alert(message);
+      }
     }
   };
 
