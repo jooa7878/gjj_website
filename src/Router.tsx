@@ -8,6 +8,7 @@ import {
 import { useAppSelector } from "./hooks/hooks";
 import { Home } from "./page/Home";
 import { Login } from "./page/Login";
+import { Test } from "./page/Test";
 
 export const Router = () => {
   const isLogin = useAppSelector((state) => state.users.user.isLogin);
@@ -16,6 +17,7 @@ export const Router = () => {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/test" element={<Test />} />
         {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
 
         <Route path="/login" element={<Login />} />

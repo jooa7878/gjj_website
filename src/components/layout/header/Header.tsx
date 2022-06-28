@@ -10,16 +10,17 @@ export const Header = () => {
   return (
     <div className="w-full flex justify-center border-b-[1px] border-mono-2">
       <div className="w-full max-w-[1194px] flex justify-between items-center">
-        <Link to="/">
+        <Link to="/home">
           <img src={Logo} alt="logo" className="w-[100px] h-[100px]" />
         </Link>
-
-        <button
-          className="bg-gjj-blue text-white rounded-lg py-3 px-5"
-          onClick={onLogout}
-        >
-          로그아웃
-        </button>
+        <Link to="/login">
+          <button
+            className="bg-gjj-blue text-white rounded-lg py-3 px-5"
+            // onClick={onLogout}
+          >
+            로그인
+          </button>
+        </Link>
       </div>
     </div>
   );
