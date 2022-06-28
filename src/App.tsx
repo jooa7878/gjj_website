@@ -1,12 +1,12 @@
 import React from "react";
-import { useAppDispatch } from "./hooks/useAppDispatch";
-import { useAppSelector } from "./hooks/useAppSelector";
+import { Router } from "./Router";
 
 function App() {
-  const name = useAppSelector((state) => state.users.name);
-  const dispatch = useAppDispatch();
-
-  return <div className="App">Hello World</div>;
+  return (
+    <div className="min-w-[1194px]">
+      <Router />
+    </div>
+  );
 }
 
 export default App;
