@@ -15,6 +15,10 @@ export const login = async (id: string, pw: string) => {
       icon: "success",
       text: "로그인 성공!",
       timer: 2000,
+    }).then(() => {
+      window.location.replace(
+        `https://jooa7878.github.io${process.env.PUBLIC_URL}/`
+      );
     });
   } catch ({ message }) {
     alert(message);
