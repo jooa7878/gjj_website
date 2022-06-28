@@ -8,11 +8,11 @@ export const Header = () => {
         <Link to="/">
           <img src={Logo} alt="logo" className="w-[100px] h-[100px]" />
         </Link>
-        <div>
+        <Link to="/login">
           <button className="bg-gjj-blue text-white rounded-lg py-3 px-5">
             로그인
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );
