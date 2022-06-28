@@ -13,14 +13,13 @@ export const Header = () => {
         <Link to="/home">
           <img src={Logo} alt="logo" className="w-[100px] h-[100px]" />
         </Link>
-        <Link to="/login">
-          <button
-            className="bg-gjj-blue text-white rounded-lg py-3 px-5"
-            // onClick={onLogout}
-          >
-            로그인
-          </button>
-        </Link>
+
+        <button
+          className="bg-gjj-blue text-white rounded-lg py-3 px-5"
+          onClick={onLogout}
+        >
+          로그아웃
+        </button>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export const login = (id: string, pw: string) => async (dispatch: Dispatch) => {
       text: "로그인 성공!",
       timer: 2000,
     }).then(() => {
-      window.location.replace("/");
+      window.location.replace(`/${process.env.PUBLIC_URL}/`);
     });
   } catch ({ message }) {
     alert(message);
