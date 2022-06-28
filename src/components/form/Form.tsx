@@ -18,20 +18,20 @@ export const Form = () => {
     // 중복확인, 날짜 여부 확인
 
     const date = format(new Date(), "yyyy-MM-dd");
-    if (date > userDueDate) {
-      return Swal.fire({
-        icon: "error",
-        text: "미래의 날짜를 입력해주세요",
-        timer: 2000,
-      });
-    }
+    // if (date > userDueDate) {
+    //   return Swal.fire({
+    //     icon: "error",
+    //     text: "미래의 날짜를 입력해주세요",
+    //     timer: 2000,
+    //   });
+    // }
 
     const ok = window.confirm("관원 등록을 진행하시겠습니까?");
     if (ok) {
       try {
         const q = query(collection(dbService, "users"));
         const userDocs = await getDocs(q);
-        console.log(userDocs);
+
         const idx = userDocs.docs.findIndex((v) => v.data().name === userName);
 
         if (idx !== -1) {
