@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { AppService } from './app.service';
 
 @Controller()
@@ -10,8 +11,18 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post()
-  postHello(): string {
-    return 'hello POST';
+  @ApiResponse({
+    status: 500,
+    description: 'Server Error ...',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Success',
+  })
+  @ApiOperation({ summary: '회원가입' })
+  @Post('signup')
+  async signup(@Body() body: any) {
+    console.log(body);
+    return 'hello sign up';
   }
 }
