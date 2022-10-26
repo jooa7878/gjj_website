@@ -5,7 +5,13 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ConfigModule.forRoot(), MongooseModule.forRoot(process.env.URL)],
+  imports: [
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
