@@ -6,12 +6,10 @@ import { AuthRepository } from 'src/auth/auth.repository';
 export class UsersService {
   constructor(private readonly authRepository: AuthRepository) {}
 
-  async info(): Promise<any> {
-    console.log('in');
-    return 'hello info -';
-    // const user = this.authRepository.findUserByEmail(req);
-    // if (!user) {
-    //   throw new UnauthorizedException('유저 없음');
-    // }
+  async getAllUsers(): Promise<any> {
+    const users = await this.authRepository.findAll();
+    const readOnlyUsers = users.map((user) => user.readOnlyData);
+
+    return readOnlyUsers;
   }
 }

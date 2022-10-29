@@ -3,7 +3,7 @@ import { HttpExceptionFilter } from './../../common/exceptions/http-exception.fi
 import { SuccessInterceptor } from './../../common/interceptors/success.interceptor';
 import { Controller, Get, UseFilters, UseInterceptors } from '@nestjs/common';
 import { AuthService } from 'src/auth/services/auth.service';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 @Controller('users')
 @UseInterceptors(SuccessInterceptor)
 @UseFilters(HttpExceptionFilter)
@@ -13,11 +13,9 @@ export class UsersController {
     private readonly authService: AuthService,
   ) {}
 
-  @Get()
-  // @ApiBearerAuth('auth')
-  async getUserInfo() {
-    console.log('hello info');
-    return 'hello info';
-    // return await this.usersService.info();
+  @ApiOperation({ summary: '모든 유저 정보' })
+  @Get('all')
+  getAllUsers() {
+    return this.usersService.getAllUsers();
   }
 }

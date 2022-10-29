@@ -24,6 +24,12 @@ export class AuthRepository {
     return auth;
   }
 
+  async findAll() {
+    const result = await this.authModel.find();
+
+    return result;
+  }
+
   // async existsByEmail(email: string): Promise<boolean> {
   //   const result = await this.catModel.exists({ email });
   //   return !!result;
