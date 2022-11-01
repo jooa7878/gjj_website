@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const Layout = ({
   children,
-  title = '구리 유도관 와이어 주짓수',
+  title = '구리 유도관 & 와이어 주짓수',
 }: LayoutProps) => {
   return (
     <>

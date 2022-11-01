@@ -14,7 +14,7 @@ export default function Home() {
   };
 
   return (
-    <Layout>
+    <Layout title='로그인 | 구리 유도관 & 와이어 주짓수'>
       <Form onSubmit={handleSubmit}>
         <FormInput
           text={'아이디'}
