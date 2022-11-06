@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { login } from '../../../apis/request/auth';
+import { useLogin } from '../../../hooks/query/auth';
 import Button from '../../atoms/Button';
 import Form from '../../molecules/Form';
 import FormInput from '../../molecules/FormInput';
@@ -7,6 +8,7 @@ import FormInput from '../../molecules/FormInput';
 const LoginForm = () => {
   const [userID, setUserID] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const { mutate } = useLogin();
 
   const handleUserIDChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserID(e.currentTarget.value);
@@ -18,8 +20,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await login({ email: userID, password: userPassword });
-    console.log(res);
+    mutate({ email: userID, password: userPassword });
   };
 
   return (
