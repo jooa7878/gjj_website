@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { login } from '../../../apis/request/auth';
 import { useLogin } from '../../../hooks/query/auth';
 import Button from '../../atoms/Button';
@@ -10,13 +10,19 @@ const LoginForm = () => {
   const [userPassword, setUserPassword] = useState('');
   const { mutate } = useLogin();
 
-  const handleUserIDChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserID(e.currentTarget.value);
-  };
+  const handleUserIDChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setUserID(e.currentTarget.value);
+    },
+    [setUserID],
+  );
 
-  const handleUserPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserPassword(e.currentTarget.value);
-  };
+  const handleUserPasswordChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setUserPassword(e.currentTarget.value);
+    },
+    [setUserPassword],
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,6 +53,8 @@ const LoginForm = () => {
         backgroundColor={'#3888FF'}
         color={'white'}
         type={'submit'}
+        marginX={0}
+        marginY={20}
       />
     </Form>
   );

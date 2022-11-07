@@ -1,19 +1,18 @@
-import instance from '../apis/instance';
 import { load, save, remove } from 'react-cookies';
+import instance from '../apis/instance';
 
-export const getAuth = () => {
+export function getAuth() {
   if (typeof window !== undefined) {
     const accessToken = load('accesstoken');
-
     return {
       accessToken,
     };
   }
 
   return null;
-};
+}
 
-export const setAuth = (accessToken: string) => {
+export function setAuth(accessToken: string) {
   instance.defaults.headers['accesstoken'] = accessToken;
 
   const accessExpires = new Date();
@@ -24,15 +23,15 @@ export const setAuth = (accessToken: string) => {
     expires: accessExpires,
     httpOnly: false, // Todo: dev/prod에 따라 분기 처리
   });
-};
+}
 
-export const logout = () => {
+export function logout() {
   try {
-    instance.defaults.headers['accesstoken'] = null;
+    // {instance}.defaults.headers['accesstoken'] = null;
     remove('accesstoken', { path: '/' });
   } catch (error) {
     throw error;
   } finally {
     location.reload();
   }
-};
+}

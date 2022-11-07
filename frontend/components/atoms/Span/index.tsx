@@ -1,36 +1,29 @@
 import { css } from '@emotion/react';
 import { MouseEventHandler } from 'react';
 
-interface ButtonProps {
+interface SpanProps {
   text: string;
   width: number | string;
-  paddingX: number;
-  paddingY: number;
-  border?: string;
+  paddingX?: number;
+  paddingY?: number;
   backgroundColor: string;
-  marginX: number;
-  marginY: number;
   color: string;
-  type: 'submit' | 'button';
+  weight: number;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button = ({
+const Span = ({
   text,
   width,
   paddingX,
   paddingY,
   backgroundColor,
-  border,
+  weight,
   color,
-  type,
   onClick,
-  marginX,
-  marginY,
-}: ButtonProps) => {
+}: SpanProps) => {
   return (
-    <button
-      type={type}
+    <span
       onClick={onClick}
       css={css`
         background-color: ${backgroundColor};
@@ -38,14 +31,12 @@ const Button = ({
         width: ${width}px;
         padding: ${paddingY}px ${paddingX}px;
         text-align: center;
-        border-radius: 6px;
-        font-weight: 500;
-        margin: ${marginY}px ${marginX}px;
+        font-weight: ${weight};
       `}
     >
       {text}
-    </button>
+    </span>
   );
 };
 
-export default Button;
+export default Span;
