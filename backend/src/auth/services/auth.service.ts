@@ -18,7 +18,6 @@ export class AuthService {
     const { email, password, name } = body;
     const isUserExist = await this.authRepository.existsByEmail(email);
     if (isUserExist) {
-      console.log('Exist');
       throw new UnauthorizedException('해당하는 유저는 이미 존재합니다.');
     }
 

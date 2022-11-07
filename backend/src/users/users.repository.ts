@@ -1,27 +1,23 @@
-import { Injectable, HttpException } from '@nestjs/common';
+import { CreateRequestDto } from './dto/create.request.dto';
+import { Users } from './users.schema';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import mongoose, { Model, Types } from 'mongoose';
-import { Auth } from './auth.schema';
-import { SignUpRequestDto } from './dto/signup.request.dto';
+import { Model } from 'mongoose';
 
 @Injectable()
-export class AuthRepository {
+export class UsersRepository {
   constructor(
-    @InjectModel(Auth.name) private readonly authModel: Model<Auth>,
+    @InjectModel(Users.name) private readonly usersModel: Model<Users>,
   ) {}
 
-  async existsByEmail(email: string): Promise<boolean> {
-    const result = await this.authModel.exists({ email });
-    return !!result;
+  async create(user: CreateRequestDto): Promise<Users> {
+    return await this.usersModel.create(user);
   }
 
-  async create(user: SignUpRequestDto): Promise<Auth> {
-    return await this.authModel.create(user);
-  }
+  async findAll() {
+    const result = await this.usersModel.find();
 
-  async findUserByEmail(email: string): Promise<Auth> {
-    const auth = await this.authModel.findOne({ email });
-    return auth;
+    return result;
   }
 
   // async existsByEmail(email: string): Promise<boolean> {

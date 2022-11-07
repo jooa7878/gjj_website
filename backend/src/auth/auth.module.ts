@@ -18,13 +18,13 @@ import { Auth, AuthSchema } from './auth.schema';
     PassportModule.register({ defaultStrategy: 'jwt', session: false }),
     JwtModule.register({
       secret: 'secret',
-      signOptions: { expiresIn: '1y' },
+      signOptions: { expiresIn: '1h' },
     }),
     MongooseModule.forFeature([{ name: Auth.name, schema: AuthSchema }]),
     forwardRef(() => UsersModule),
   ],
+  controllers: [AuthController],
   providers: [AuthService, JwtStrategy, AuthRepository],
   exports: [AuthService, AuthRepository],
-  controllers: [AuthController],
 })
 export class AuthModule {}
