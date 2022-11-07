@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import GlobalStyles from '../styles/GlobalStyles';
 import { RecoilRoot } from 'recoil';
+import PageWrapper from '../components/wrapper/PageWrapper';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,15 +16,17 @@ export const queryClient = new QueryClient({
   },
 });
 
-function App({ Component, pageProps }: AppProps & any) {
+const App = ({ Component, pageProps }: AppProps & any) => {
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <PageWrapper>
+          <Component {...pageProps} />
+        </PageWrapper>
       </QueryClientProvider>
     </RecoilRoot>
   );
-}
+};
 
 export default App;

@@ -27,7 +27,7 @@ export function setAuth(accessToken: string) {
 
 export function logout() {
   try {
-    // {instance}.defaults.headers['accesstoken'] = null;
+    instance.defaults.headers['accesstoken'] = null;
     remove('accesstoken', { path: '/' });
   } catch (error) {
     throw error;
