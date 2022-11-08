@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Layout from '../../components/layout';
 import GNB from '../../components/molecules/GNB';
+import { useUsers } from '../../hooks/query/user';
 import { logout } from '../../utils/auth';
 
 const ListPage: NextPage = () => {
