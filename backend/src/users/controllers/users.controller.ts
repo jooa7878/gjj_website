@@ -20,13 +20,13 @@ export class UsersController {
 
   @ApiOperation({ summary: '모든 유저 정보' })
   @Get('all')
-  getAllUsers() {
-    return this.usersService.getAllUsers();
+  async getAllUsers() {
+    return await this.usersService.getAllUsers();
   }
 
   @ApiOperation({ summary: '유저 생성하기' })
   @Post()
-  createUser(@Body() data: CreateRequestDto) {
-    return this.usersService.creatUser(data);
+  async createUser(@Body() data: CreateRequestDto) {
+    return await this.usersService.creatUser(data);
   }
 }
