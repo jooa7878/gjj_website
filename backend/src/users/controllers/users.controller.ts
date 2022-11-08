@@ -19,7 +19,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @ApiOperation({ summary: '모든 유저 정보' })
-  @Get('all')
+  @Get()
   async getAllUsers() {
     return await this.usersService.getAllUsers();
   }
