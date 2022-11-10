@@ -11,7 +11,6 @@ const PageWrapper = ({ children }: WrapperProps) => {
   const isAuth = !!getAuth()?.accessToken;
 
   useEffect(() => {
-    console.log(isAuth);
     if (isAuth && router.pathname === '/') {
       // 로그인을 한 상태
       const fallback = router.query.fallback as string;

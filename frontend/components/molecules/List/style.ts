@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 
 const list = css`
-  padding-bottom: 20px;
+  padding: 20px 50px 20px 10px;
+  width: 100%;
 `;
 
 const styles = { list };
