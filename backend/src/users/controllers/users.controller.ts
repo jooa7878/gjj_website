@@ -6,6 +6,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   UseFilters,
   UseInterceptors,
@@ -22,6 +23,12 @@ export class UsersController {
   @Get()
   async getAllUsers() {
     return await this.usersService.getAllUsers();
+  }
+
+  @ApiOperation({ summary: '특정 유저 정보' })
+  @Get(':name')
+  async getUser(@Param() params: { name: string }) {
+    return await this.usersService.getUser(params.name);
   }
 
   @ApiOperation({ summary: '유저 생성하기' })

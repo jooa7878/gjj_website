@@ -14,6 +14,12 @@ export class UsersService {
     return readOnlyUsers;
   }
 
+  async getUser(name: string): Promise<any> {
+    const user = await this.usersRepository.findByName(name);
+
+    return user.readOnlyData;
+  }
+
   async creatUser(body: CreateRequestDto): Promise<any> {
     const { name, dueDate } = body;
 

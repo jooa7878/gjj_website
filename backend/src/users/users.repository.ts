@@ -20,6 +20,11 @@ export class UsersRepository {
     return result;
   }
 
+  async findByName(name: string) {
+    const result = await this.usersModel.findOne({ name });
+    return result;
+  }
+
   // async existsByEmail(email: string): Promise<boolean> {
   //   const result = await this.catModel.exists({ email });
   //   return !!result;
