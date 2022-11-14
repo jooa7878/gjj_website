@@ -25,6 +25,10 @@ export class UsersRepository {
     return result;
   }
 
+  async deleteByName(id: string) {
+    return await this.usersModel.findOneAndDelete({ _id: id });
+  }
+
   // async existsByEmail(email: string): Promise<boolean> {
   //   const result = await this.catModel.exists({ email });
   //   return !!result;

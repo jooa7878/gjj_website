@@ -30,4 +30,8 @@ export class UsersService {
 
     return user.readOnlyData;
   }
+
+  async deleteUser(id: string): Promise<any> {
+    return this.usersRepository.deleteByName(id);
+  }
 }

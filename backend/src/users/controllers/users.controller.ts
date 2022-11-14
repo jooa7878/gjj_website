@@ -5,6 +5,7 @@ import { SuccessInterceptor } from './../../common/interceptors/success.intercep
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -29,6 +30,12 @@ export class UsersController {
   @Get(':name')
   async getUser(@Param() params: { name: string }) {
     return await this.usersService.getUser(params.name);
+  }
+
+  @ApiOperation({ summary: '특정 유저 삭제' })
+  @Delete(':id')
+  async deleteUser(@Param() params: { id: string }) {
+    return await this.usersService.deleteUser(params.id);
   }
 
   @ApiOperation({ summary: '유저 생성하기' })
