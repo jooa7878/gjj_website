@@ -14,6 +14,7 @@ interface FormInputProps {
   placeholder: string;
   type: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  value: string | number;
 }
 
 const FormInput = ({
@@ -22,11 +23,17 @@ const FormInput = ({
   type,
   placeholder,
   onChange,
+  value,
 }: FormInputProps) => {
   return (
     <div css={styles.container}>
       <Label text={text} htmlFor={htmlFor} />
-      <Input type={type} placeholder={placeholder} onChange={onChange} />
+      <Input
+        type={type}
+        placeholder={placeholder}
+        onChange={onChange}
+        value={value}
+      />
     </div>
   );
 };

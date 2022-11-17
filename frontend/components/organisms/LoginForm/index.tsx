@@ -1,14 +1,15 @@
 import { useCallback, useState } from 'react';
-import { login } from '../../../apis/request/auth';
-import { useLogin } from '../../../hooks/query/auth';
 import Button from '../../atoms/Button';
 import Form from '../../molecules/Form';
 import FormInput from '../../molecules/FormInput';
 
-const LoginForm = () => {
+interface LoginFormProps {
+  onSubmit: (email: string, password: string) => void;
+}
+
+const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const [userID, setUserID] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const { mutate } = useLogin();
 
   const handleUserIDChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,9 +25,9 @@ const LoginForm = () => {
     [setUserPassword],
   );
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    mutate({ email: userID, password: userPassword });
+    onSubmit(userID, userPassword);
   };
 
   return (
@@ -37,6 +38,7 @@ const LoginForm = () => {
         type={'text'}
         placeholder={'아이디를 입력해주세요'}
         onChange={handleUserIDChange}
+        value={userID}
       />
       <FormInput
         text={'비밀번호'}
@@ -44,6 +46,7 @@ const LoginForm = () => {
         type={'password'}
         placeholder={'비밀번호를 입력해주세요'}
         onChange={handleUserPasswordChange}
+        value={userPassword}
       />
       <Button
         text={'로그인'}

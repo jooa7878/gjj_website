@@ -21,3 +21,15 @@ export const getUser = async (name: string) => {
 
   return data;
 };
+
+export const deleteUser = async (id: string) => {
+  const options = {
+    method: 'DELETE',
+    url: `${process.env.NEXT_PUBLIC_API_URL}/users/${id}`,
+  };
+
+  const res = await instance(options);
+
+  console.log(res);
+  return res.data;
+};

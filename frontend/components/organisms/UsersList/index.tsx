@@ -10,13 +10,18 @@ const UsersList = () => {
 
   return (
     <List>
-      {data.map((item: { name: string; dueDate: string }, idx: number) => (
-        <ListItem
-          key={item.name + item.dueDate + idx}
-          text={item.name}
-          dueDate={item.dueDate}
-        />
-      ))}
+      {data.map(
+        (item: { name: string; dueDate: string; id: string }, idx: number) => (
+          <>
+            <ListItem
+              key={item.name + item.dueDate + idx}
+              text={item.name}
+              dueDate={item.dueDate}
+              id={item.id}
+            />
+          </>
+        ),
+      )}
     </List>
   );
 };
