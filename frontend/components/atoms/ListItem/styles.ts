@@ -10,6 +10,9 @@ const li = css`
   border-bottom: 1px solid #d2d2d2;
 `;
 
-const styles = { li };
+const userName = css`
+  width: 100px;
+`;
+const styles = { li, userName };
 
 export default styles;

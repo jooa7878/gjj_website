@@ -19,13 +19,7 @@ const ListItem = ({
 
   return (
     <li css={styles.li}>
-      <span
-        css={css`
-          width: 100px;
-        `}
-      >
-        {text}
-      </span>
+      <span css={styles.userName}>{text}</span>
       <span>{dueDate}</span>
       <div>
         <Button
